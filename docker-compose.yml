@@ -1,0 +1,20 @@
+version: '2'
+services:
+  app:
+    build: devops/app
+    volumes:
+      - "./bikeshed:/app"
+    ports:
+      - "8000:8000"
+      - 8080
+    depends_on:
+      - postgres
+    command: "./run.sh"    
+
+  postgres:
+    image: postgres:latest
+    volumes:
+      - "./devops/db:/docker-entrypoint-initdb.d"
+    environment:
+      POSTGRES_PASSWORD: docker
+      POSTGRES_USER: docker
