@@ -47,8 +47,12 @@ class BikeForm(ModelForm):
                 css_class='row'
             ),
             Div(
+                css_class="error-messages"
+            ),
+            Div(
                 Submit('Submit', 'Submit')
             )
+
         )
 
 

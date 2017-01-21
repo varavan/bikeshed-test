@@ -36,8 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'django_seed',
     'bikeshed',
-    'app'
+    'app',
+    'api'
 ]
 
 MIDDLEWARE = [

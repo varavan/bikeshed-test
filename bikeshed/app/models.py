@@ -27,5 +27,10 @@ class Bike(models.Model):
     size = models.IntegerField(validators=[MaxValueValidator(30),MinValueValidator(12)], blank=False)
     price = models.DecimalField(decimal_places=2, max_digits=15)
 
+
+    def setImage(self, image):
+        self.image_thumbnail = image
+        self.image = image
+
     def __str__(self):
         return self.model

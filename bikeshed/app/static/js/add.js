@@ -32,8 +32,21 @@ $('#add-form').ajaxForm(
     },
     error: function(err){
         if(err.status == 400){
-            $("#form-content").html(err.responseText);
-            registerUploadPreview();
+
+            $(".error-messages").html('');
+            template = "<p><b>Field __field__</b> __error__</p>";
+
+            var errors = JSON.parse(err.responseText);
+
+            for(errorIndex in errors){
+                $(".error-messages").html();
+                template = template.replace('__field__', errorIndex);
+                template = template.replace('__error__', errors[errorIndex]);
+                $(".error-messages").append(template);
+            }
+
+            $('#submit-id-submit').removeAttr('disabled');
+
         }else{
             alert('there was an error processing your request');
         }
