@@ -25,6 +25,7 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^add/', views.add, name='add'),
+    url(r'^add-bike-partial', views.partial_add, name='add_partial'),
     url(r'^show/(?P<bikeid>[0-9]+)/$', views.show, name='show'),
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
