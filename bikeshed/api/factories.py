@@ -1,6 +1,4 @@
-
 def bike_view_factory(bike):
-
     return {
         'id': bike.id,
         'model': bike.model,

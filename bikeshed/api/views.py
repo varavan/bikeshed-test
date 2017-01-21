@@ -6,12 +6,13 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.http import JsonResponse
-import logging
+
 
 def list(request):
     bikes = [bike_view_factory(bike) for bike in Bike.objects.all().order_by('-price')[:50:1]]
 
     return JsonResponse(bikes, safe=False)
+
 
 def list_sorted(request, sort, order):
     sortString = '-' if order == 'desc' else ''
@@ -20,6 +21,7 @@ def list_sorted(request, sort, order):
     bikes = [bike_view_factory(bike) for bike in Bike.objects.all().order_by(sortString)[:50:1]]
 
     return JsonResponse(bikes, safe=False)
+
 
 @login_required
 def add(request):

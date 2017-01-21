@@ -9,15 +9,13 @@ class BikeForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(BikeForm, self).__init__(*args, **kwargs)
 
-        static_holder_image =static('images/no-preview-available.png')
+        static_holder_image = static('images/no-preview-available.png')
 
         self.fields['image'].label = 'Upload an image'
-
 
         self.helper = FormHelper(self)
         self.helper.form_id = 'add-bike-form'
         self.form_tag = False
-        # self.helper.layout.append(Submit('save', 'save'))
         self.helper.form_class = 'form-horizontal'
 
         self.helper.layout = Layout(
@@ -39,9 +37,10 @@ class BikeForm(ModelForm):
                     Field('type'),
                     Field('headline'),
                     Field('description')
-                , css_class='col-md-8'),
+                    , css_class='col-md-8'),
                 Div(
-                    HTML('<img id="preview_image" src="'+static_holder_image+'" class="img-responsive" alt="your image" />'),
+                    HTML(
+                        '<img id="preview_image" src="' + static_holder_image + '" class="img-responsive" alt="your image" />'),
                     Div(Field('image', help_text="Upload an image"), css_class='fileUpload btn btn-primary'),
                     css_class='col-md-4'),
                 css_class='row'
@@ -54,8 +53,6 @@ class BikeForm(ModelForm):
             )
 
         )
-
-
 
     class Meta:
         model = Bike

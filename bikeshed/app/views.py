@@ -6,7 +6,6 @@ from app.forms import BikeForm
 
 # Create your templates here.
 def index(request):
-
     return render(
         request,
         'app/home.html')
