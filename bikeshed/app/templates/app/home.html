@@ -1,41 +1,40 @@
 {% extends 'app/layout.html' %}
+{% load static %}
 
 {% block content %}
-<div class="row">
-    <div class="col-sm-8">
-        <h3>Current inventory</h3>
+    <div class="row">
+        <div class="col-sm-8">
+            <h3>Current inventory</h3>
+        </div>
+        <div class="col-sm-4">
+        <select id="sort-selector" class="form-control">
+            <option value="{% url 'api_list_sorted' sort='price' order='desc' %}">Order by price descendent</option>
+            <option value="{% url 'api_list_sorted' sort='price' order='asc' %}">Order by price ascendent</option>
+            <option value="{% url 'api_list_sorted' sort='model' order='asc' %}">Order by model name ABC</option>
+            <option value="{% url 'api_list_sorted' sort='model' order='desc' %}">Order by model name ZXY</option>
+            <option value="{% url 'api_list_sorted' sort='brand' order='asc' %}">Order by brand name ABC</option>
+            <option value="{% url 'api_list_sorted' sort='brand' order='desc' %}">Order by brand name ZXY</option>
+        </select>     </div>
     </div>
-    <div class="col-sm-4">
-    <select id="sort-selector" class="form-control">
-        <option value="{% url 'api_list_sorted' sort='price' order='desc' %}">Order by price descendent</option>
-        <option value="{% url 'api_list_sorted' sort='price' order='asc' %}">Order by price ascendent</option>
-        <option value="{% url 'api_list_sorted' sort='model' order='desc' %}">Order by model name ZXY</option>
-        <option value="{% url 'api_list_sorted' sort='model' order='asc' %}">Order by model name ABC</option>
-        <option value="{% url 'api_list_sorted' sort='brand' order='desc' %}">Order by brand name ZXY</option>
-        <option value="{% url 'api_list_sorted' sort='brand' order='asc' %}">Order by brand name ABC</option>
-    </select>     </div>
-</div>
-<div>
 
-</div>
+    <hr>
 
-<div class="hide row loading-content">
-    <div class="col-sm-4 col-sm-offset-4">
-        {% include 'app/partial/loading.html' %}
+    <div class="hide row loading-content">
+        <div class="col-sm-4 col-sm-offset-4">
+            {% include 'app/partial/loading.html' %}
+        </div>
     </div>
-</div>
 
-<div class="row bikes-content">
+    <div class="row bikes-content">
 
-</div>
+    </div>
 
-{% include 'app/partial/bike_template.html' %}
+    {% include 'app/partial/bike_template.html' %}
 
 {% endblock %}
 
 {% block javascripts %}
 
-    {% load static %}
     <script src="{% static "js/home.js" %}"></script>
 
     <script>

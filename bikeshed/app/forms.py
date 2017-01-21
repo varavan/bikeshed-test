@@ -4,15 +4,21 @@ from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from .models import Bike
 
-
 class BikeForm(ModelForm):
+
     def __init__(self, *args, **kwargs):
         super(BikeForm, self).__init__(*args, **kwargs)
 
-        static_holder_image = static('images/no-preview-available.png')
+        # add image to the model
+        if 'image' in self.files:
+            self.instance.setImage(self.files['image'])
+
+
+        image_preview_path = static('images/no-preview-available.png')
 
         self.fields['image'].label = 'Upload an image'
 
+        # create layout of the form
         self.helper = FormHelper(self)
         self.helper.form_id = 'add-bike-form'
         self.form_tag = False
@@ -40,7 +46,7 @@ class BikeForm(ModelForm):
                     , css_class='col-md-8'),
                 Div(
                     HTML(
-                        '<img id="preview_image" src="' + static_holder_image + '" class="img-responsive" alt="your image" />'),
+                        '<img id="preview_image" src="' + image_preview_path + '" class="img-responsive" alt="your image" />'),
                     Div(Field('image', help_text="Upload an image"), css_class='fileUpload btn btn-primary'),
                     css_class='col-md-4'),
                 css_class='row'

@@ -16,11 +16,13 @@ function reloadList(){
         for(dataIndex in data){
             var bike = data[dataIndex];
 
-            var template = $('#bike_template').html();
-            template = template.replace('__url__', '/show/'+bike.id)
-            template = template.replace('__image__', bike.image.thumbnail)
-            template = template.replace('__bike_model__', bike.model)
-            template = template.replace('__bike_price__', bike.price)
+            var template =
+                $('#bike_template')
+                    .html()
+                    .replace('__url__', '/show/'+bike.id)
+                    .replace('src="#"', 'src="'+bike.image.thumbnail+'"')
+                    .replace('__bike_model__', bike.model)
+                    .replace('__bike_price__', bike.price);
 
             $(".bikes-content").append(template);
         }

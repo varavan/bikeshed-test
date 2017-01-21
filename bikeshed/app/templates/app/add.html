@@ -1,5 +1,6 @@
 {% extends 'app/layout.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
 <h1>Add a bike</h1>
@@ -19,7 +20,6 @@
 
 {% block javascripts %}
 
-    {% load static %}
     <script src="{% static "js/add.js" %}"></script>
 
 {%endblock%}

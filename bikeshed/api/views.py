@@ -29,11 +29,10 @@ def add(request):
         form = BikeForm(request.POST, request.FILES)
         if form.is_valid():
             bike = form.save(commit=False)
-            bike.setImage(request.FILES['image'])
             bike.created_by = request.user
 
             bike.save()
-            # return 204 status as everything is okay and can continue
+
             return JsonResponse({'redirect': reverse('index')})
 
         return JsonResponse(form.errors, status=400)
