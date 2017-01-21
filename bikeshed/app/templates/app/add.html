@@ -1,0 +1,42 @@
+{% extends 'app/layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Add a bike</h1>
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    {% crispy form %}
+
+</form>
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+<script>
+    function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#preview_image').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#id_image").change(function(){
+    readURL(this);
+});
+
+{% load static %}
+$('#preview_image').attr('src', '{% static "images/no-preview-available.png" %}');
+
+
+</script>
+{%endblock%}

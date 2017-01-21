@@ -1,0 +1,22 @@
+{% extends 'app/layout.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ bike.image_big.url }}" class="img-responsive">
+            <h1>{{ bike.headline }}</h1>
+            <p>{{ bike.description }}</p>
+        </div>
+        <div class="col-md-4">
+            <h4>{{ bike.model }}</h4>
+            <h5>$ {{ bike.price }}</h5>
+            <h6>{{ bike.size }}</h6>
+
+
+            <a class="btn btn-primary" href="{% url 'index' %}">Back to the list</a>
+        </div>
+        <div class="col-md-2">
+            <img src="http://logonoid.com/images/kona-logo.jpg" class="img-responsive">
+        </div>
+    </div>
+{% endblock %}

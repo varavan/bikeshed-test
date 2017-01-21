@@ -1,0 +1,21 @@
+{% extends 'app/layout.html' %}
+
+{% block content %}
+<h3>Current inventory</h3>
+<div class="row">
+
+    {% for bike in bikes %}
+    <div class="col-md-3 card">
+        <div class="image">
+            <a href="{% url 'show' bikeid=bike.id %}">
+                <img src="{{ bike.image_small.url }}" class="img-responsive">
+            </a>
+        </div>
+        <div class="text">
+            {{ bike.model }} <br>
+            <span class="price">$ {{ bike.price }}</span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
