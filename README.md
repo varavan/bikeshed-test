@@ -29,5 +29,4 @@ Demo user **demo** / **demo**
 
 ## Testing
 
-To run test with docker execute `docker-compose run test`.
-a
+To run test with docker execute `docker-compose run test` or run `python manage.py test` on app container
