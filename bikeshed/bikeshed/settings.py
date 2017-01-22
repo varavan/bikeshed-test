@@ -124,6 +124,10 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'add'
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+if 'MEDIA_ROOT_PATH' in os.environ:
+    MEDIA_ROOT = os.environ['MEDIA_ROOT_PATH']
+else:
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

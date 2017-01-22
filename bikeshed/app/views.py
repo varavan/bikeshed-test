@@ -1,3 +1,5 @@
+# coding=utf-8
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Bike
@@ -24,13 +26,16 @@ def add(request):
 
 
 def show(request, bikeid):
-    bike = Bike.objects.get(pk=bikeid)
+    try:
+        bike = Bike.objects.get(pk=bikeid)
 
-    # check if object does not exists
+        # check if object does not exists
 
-    return render(
-        request,
-        'app/show.html',
-        {
-            'bike': bike
-        })
+        return render(
+            request,
+            'app/show.html',
+            {
+                'bike': bike
+            })
+    except Exception:
+        return HttpResponse(status=404)
