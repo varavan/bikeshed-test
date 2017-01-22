@@ -16,6 +16,7 @@ This project is a demostration about django. The point is to create a Bike CRM w
 **tech**
 
 - [docker](https://www.docker.com/)
+- [docker-compose](https://docs.docker.com/compose/)
 
 ## Usage
 
