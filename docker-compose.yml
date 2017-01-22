@@ -12,6 +12,15 @@ services:
     environment:
       MEDIA_ROOT_PATH: '/appdata/media'
     command: "./run.sh"    
+  test:
+    build: devops/app
+    volumes:
+      - "./bikeshed:/app"
+    depends_on:
+      - postgres
+    environment:
+      MEDIA_ROOT_PATH: '/appdata/media'
+    command: "./test_on_container.sh"
 
   postgres:
     image: postgres:latest
