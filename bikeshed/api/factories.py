@@ -1,3 +1,4 @@
+# coding=utf-8
 def bike_view_factory(bike):
     return {
         'id': bike.id,

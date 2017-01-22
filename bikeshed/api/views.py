@@ -1,3 +1,4 @@
+# coding=utf-8
 from app.models import Bike
 from app.forms import BikeForm
 from .factories import bike_view_factory
