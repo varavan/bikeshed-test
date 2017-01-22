@@ -4,9 +4,17 @@ import uuid
 
 
 def sanitaze_image_upload_path(instance, filename):
-    path = "image-upload"
+    path = 'image-upload'
+
     filename = filename.split('.')
     extension = str(filename.pop())
-    id = str(uuid.uuid4())
-    format = id + '.' + extension
-    return os.path.join(path, format)
+
+    id_ = str(uuid.uuid4())
+
+    new_file_name = '%s.%s' % (
+        id_,
+        extension
+    )
+    return os.path.join(path, new_file_name)
+
+

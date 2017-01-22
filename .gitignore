@@ -3,3 +3,5 @@
 */.idea
 bikeshed/media
 bikeshed/static
+*.py[co]
+*.py[cod]

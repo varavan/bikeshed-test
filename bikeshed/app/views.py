@@ -1,7 +1,7 @@
 # coding=utf-8
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 from .models import Bike
 from app.forms import BikeForm
 
@@ -26,16 +26,11 @@ def add(request):
 
 
 def show(request, bikeid):
-    try:
-        bike = Bike.objects.get(pk=bikeid)
+    bike = get_object_or_404(Bike, pk=bikeid)
 
-        # check if object does not exists
-
-        return render(
-            request,
-            'app/show.html',
-            {
-                'bike': bike
-            })
-    except Exception:
-        return HttpResponse(status=404)
+    return render(
+        request,
+        'app/show.html',
+        {
+            'bike': bike
+        })
