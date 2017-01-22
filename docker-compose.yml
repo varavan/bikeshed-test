@@ -9,6 +9,8 @@ services:
       - 8080
     depends_on:
       - postgres
+    environment:
+      MEDIA_ROOT_PATH: '/appdata/media'
     command: "./run.sh"    
 
   postgres:

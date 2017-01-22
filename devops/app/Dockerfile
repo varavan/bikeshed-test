@@ -1,5 +1,7 @@
 FROM python:3.5
 
+RUN mkdir -p /appdata/media
+
 WORKDIR /app
 RUN python -m pip install django
 RUN python -m pip install psycopg2
